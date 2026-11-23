@@ -1,14 +1,470 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>heading levels</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK | Creative Studio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080b12;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+:root {
+    --blue: #6c63ff;
+    --cyan: #00d4ff;
+    --bg: #080b12;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    border-bottom: 1px solid #202534;
+    position: sticky;
+    top: 0;
+    background: rgba(8,11,18,0.95);
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+nav a {
+    color: #bbb;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--cyan);
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.glow {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: var(--blue);
+    filter: blur(140px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.tag {
+    border: 1px solid #343b55;
+    padding: 10px 18px;
+    border-radius: 30px;
+    color: var(--cyan);
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 85px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #6c63ff, #00d4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: #a7adbd;
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    color: white;
+    padding: 15px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px #6c63ff55;
+}
+
+.secondary {
+    background: transparent;
+    border: 1px solid #30394c;
+    margin-left: 10px;
+}
+
+section {
+    padding: 90px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    color: #9da5b6;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: linear-gradient(145deg, #141a29, #0c1019);
+    border: 1px solid #242c40;
+    padding: 30px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--blue);
+}
+
+.icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #a4adbd;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.about {
+    background: #0d111b;
+    border-top: 1px solid #202534;
+    border-bottom: 1px solid #202534;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-content p {
+    color: #a4adbd;
+    line-height: 1.9;
+    margin-top: 20px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin-top: 45px;
+}
+
+.stat {
+    padding: 25px;
+    background: #141a29;
+    border-radius: 15px;
+    border: 1px solid #252c3d;
+}
+
+.stat h3 {
+    color: var(--cyan);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    font-size: 13px;
+    color: #9da5b6;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    color: #a4adbd;
+    margin: 20px 0 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #81899b;
+    border-top: 1px solid #202534;
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--cyan);
+}
+
+#top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: none;
+    z-index: 99;
+    font-size: 20px;
+}
+
+@media(max-width:600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    section {
+        padding: 65px 6%;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .secondary {
+        margin-left: 0;
+        margin-top: 12px;
+    }
+}
+</style>
 </head>
-<body bgcolor="skyblue">
-  <H1>Heading level 1 Text is largest in size</H1>
-  <H2>Heading level 2 </H2>
-  <H3>Heading level 3 </H3>
-  <H4>Heading level 4 </H4>
-  <H5>Heading level 5 </H5>
-  <H6>Heading level 6 Text is smallest in size</H6>
+
+<body>
+
+<header>
+    <div class="logo">K<span>K</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <div class="glow"></div>
+
+    <div class="tag">✦ WELCOME TO KK STUDIO</div>
+
+    <h1>Create Something<br>
+    <span class="gradient">Extraordinary.</span></h1>
+
+    <p>
+        Explore creativity, technology and design.
+        Welcome to a digital space built for ideas,
+        innovation and the future.
+    </p>
+
+    <div>
+        <a href="#services" class="btn">Explore More ↗</a>
+        <a href="#about" class="btn secondary">Discover</a>
+    </div>
+</div>
+
+<section id="services">
+
+    <div class="section-title">
+        <h2>What We <span class="gradient">Explore</span></h2>
+        <p>Creativity meets technology.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>Creative Design</h3>
+            <p>
+                Explore modern design, digital visuals
+                and creative ideas for the web.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💻</div>
+            <h3>Web Development</h3>
+            <p>
+                Build digital experiences using
+                modern web technologies.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Innovation</h3>
+            <p>
+                Discover new possibilities through
+                technology and experimentation.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Future Projects</h3>
+            <p>
+                Turn ideas into real projects
+                and explore new digital worlds.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="about">
+
+    <div class="about-content">
+
+        <div class="section-title">
+            <h2>About <span class="gradient">KK</span></h2>
+        </div>
+
+        <p>
+            KK is a creative digital concept.
+            This website is a demonstration of how
+            HTML, CSS and JavaScript can combine
+            to create a modern web experience.
+        </p>
+
+        <p>
+            Every great project starts with an idea.
+            Learn, build, experiment and improve
+            one step at a time.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>01</h3>
+                <p>Creative Ideas</p>
+            </div>
+
+            <div class="stat">
+                <h3>02</h3>
+                <p>Digital Design</p>
+            </div>
+
+            <div class="stat">
+                <h3>03</h3>
+                <p>Future Vision</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="contact" id="contact">
+
+    <div class="section-title">
+        <h2>Let's <span class="gradient">Connect</span></h2>
+    </div>
+
+    <p>
+        This is your first step into
+        creating something of your own.
+    </p>
+
+    <button class="btn" onclick="sayHello()">
+        Click Me ✦
+    </button>
+
+</section>
+
+<footer>
+    Created with <span>✦</span> by a future developer.
+    <p style="margin-top:10px">© 2026 KK Studio</p>
+</footer>
+
+<button id="top" onclick="goTop()">↑</button>
+
+<script>
+function sayHello() {
+    alert("Welcome to KK! Keep creating and learning.");
+}
+
+function goTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+window.addEventListener("scroll", function() {
+    const button = document.getElementById("top");
+
+    if(window.scrollY > 300) {
+        button.style.display = "block";
+    } else {
+        button.style.display = "none";
+    }
+});
+</script>
+
 </body>
 </html>
